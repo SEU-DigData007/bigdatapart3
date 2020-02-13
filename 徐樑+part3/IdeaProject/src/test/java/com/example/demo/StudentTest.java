@@ -86,7 +86,7 @@ public class StudentTest {
         }
     }
 
-    // 分页查询
+    // 分页查询 查询年纪大于等于18岁的学生信息
     @Test
      public void queryStudentForPage(){
         QueryWrapper<Student> queryWrapper = new QueryWrapper<>();

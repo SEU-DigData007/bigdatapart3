@@ -34,18 +34,21 @@ import java.util.List;
 public class StudentController {
     @Autowired
     private IStudentService studentService;
-    /*// 分页查询
+
+    /*// 条件查询 查询年纪大于21岁的学生信息
     @RequestMapping("/findByAge")
     public List<Student> findStudent(Student student) {
         QueryWrapper<Student> queryWrapper = new QueryWrapper<>(student);
-        queryWrapper.eq("age",21);
+        queryWrapper.gt("age",21);
         return studentService.selectList(queryWrapper);
     }
+
+    // 分页查询 查询年纪大于18岁的学生信息
     @RequestMapping("/findPage/{pageNo}/{pageSize}")
-    public IPage<Student> findByPage(@Param("pageNo") Integer pageNo, @Param("pageSize") Integer pageSize) {
+    public IPage<Student> findByPage(@Param("pageNo") int pageNo, @Param("pageSize") int pageSize) {
         QueryWrapper<Student> queryWrapper = new QueryWrapper<>();
         IPage<Student> studentPage = new Page<>(pageNo,pageSize);// 参数一是当前页，参数二是每页个数
-        studentPage = studentService.selectPage(studentPage, queryWrapper.ge("age", 18));
+        studentPage = studentService.selectPage(studentPage, queryWrapper.gt("age", 18));
         return studentPage;
     }*/
 }
