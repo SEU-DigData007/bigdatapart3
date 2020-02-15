@@ -1,6 +1,8 @@
 package com.example.demo1.sys.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo1.sys.entity.Foo;
 import com.example.demo1.sys.mapper.FooMapper;
 import com.example.demo1.sys.service.IFooService;
@@ -29,8 +31,11 @@ public class FooServiceImpl extends ServiceImpl<FooMapper, Foo> implements IFooS
         return fooMapper.selectList(queryWrapper);
     }
 
-
     public List<Foo> selectByBar(String bar){
         return fooMapper.selectByBar(bar);
+    }
+
+    public IPage<Foo> findByPage(Page<Foo> page) {
+        return fooMapper.selectPage(page,null);
     }
 }
